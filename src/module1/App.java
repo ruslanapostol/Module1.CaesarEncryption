@@ -2,8 +2,8 @@ package module1;
 
 public class App {
 
-     static final String  INPUT_NAME = "/Users/ruslanapostol/Downloads/cryptanalyzer/src/crypt/Karlsson-on-the-Roof.txt";
-     static final String OUTPUT_NAME = "/Users/ruslanapostol/Downloads/cryptanalyzer/src/crypt/Karlsson-on-the-Roof_out.txt";
+     static final String  INPUT_NAME = "/Users/ruslanapostol/Downloads/Module1.CaesarEncryption/Karlsson-on-the-roof.txt";
+     static final String OUTPUT_NAME = "/Users/ruslanapostol/Downloads/Module1.CaesarEncryption/Karlsson-on-the-roof_out.txt";
      static Caesar caesar;
 
     public static void main(String[] args) {
