@@ -18,21 +18,27 @@ public class App {
 
    static  void encrypt(String fileName) {
        System.out.println("Encrypt INPUT_NAME: " + fileName);
-       String output = caesar.encrypt("abc", 3);
+       String content = "abc";
+       // use BufferedReader to read the content of file into content var
+       String output = caesar.encrypt(content, 3);
        System.out.println("output = " + output);
+       // use BufferedWriter to write value of output var into OUTPUT_NAME file
 
     }
 
    static void decrypt(String fileName) {
        System.out.println("Decrypt INPUT_NAME: " + fileName);
-       String output = caesar.decrypt("abc", 3);
+       String content = "abc";
+       // use BufferedReader to read the content of file into content var
+       String output = caesar.decrypt(content, 3);
        System.out.println("output = " + output);
-
+       // use BufferedWriter to write value of output var into OUTPUT_NAME file
     }
 
    static void bruteForce(String fileName) {
        System.out.println("bruteForce INPUT_NAME: " + fileName);
-
+       //in a for call caesar.decrypt(content, i);
+       // and test the result at each iteration
     }
 
 }
