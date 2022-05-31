@@ -43,7 +43,6 @@ public class Caesar {
         ALPHABET.add('Ь');
         ALPHABET.add('Э');
         ALPHABET.add('Ю');
-        ALPHABET.add('Э');
         ALPHABET.add('Я');
         ALPHABET.add('.');
         ALPHABET.add(',');
@@ -62,7 +61,7 @@ public class Caesar {
     String encrypt(String text, int key) {
         System.out.println("CaesarEncrypt(): key = " + key);
         String result = "";
-        for (int i = 0; i <text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             System.out.println("ch = " + ch);
             int position = ALPHABET2POS.get(Character.toUpperCase(ch));
