@@ -13,7 +13,7 @@ public class App {
         switch (args[0]) {
             case "1": encrypt(INPUT_NAME); break;
             case "2": decrypt(OUTPUT_NAME); break;
-            case "3": bruteForce(INPUT_NAME); break;
+            case "3": bruteForce(OUTPUT_NAME); break;
         }
 
     }
@@ -38,8 +38,17 @@ public class App {
        // use BufferedWriter to write value of output var into OUTPUT_NAME file
     }
 
-   static void bruteForce(String fileName) {
+   static void bruteForce(String fileName) throws IOException {
        System.out.println("bruteForce INPUT_NAME: " + fileName);
+       String content = readFile(fileName);
+       for (int key = 1; key < 41; key++) {
+           String output = caesar.decrypt(content, key);
+           if( output.indexOf("КАРЛСОН") > 0) {
+               System.out.println("output = " + output);
+               System.out.println("key = " + key);
+               break;
+           }
+       }
 
        //in a for call caesar.decrypt(content, i);
        // and test the result at each iteration
