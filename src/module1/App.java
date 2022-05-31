@@ -12,7 +12,7 @@ public class App {
         caesar = new Caesar();
         switch (args[0]) {
             case "1": encrypt(INPUT_NAME); break;
-            case "2": decrypt(INPUT_NAME); break;
+            case "2": decrypt(OUTPUT_NAME); break;
             case "3": bruteForce(INPUT_NAME); break;
         }
 
@@ -20,21 +20,21 @@ public class App {
 
    static  void encrypt(String fileName) throws IOException {
        System.out.println("Encrypt INPUT_NAME: " + fileName);
-       String content = "abc";
-       readFile(INPUT_NAME);
+//       String content = "abc";
+       String content = readFile(fileName);
        String output = caesar.encrypt(content, 3);
        System.out.println("output = " + output);
-       writeFile(OUTPUT_NAME);
+       writeFile(OUTPUT_NAME,output);
 
     }
 
    static void decrypt(String fileName) throws IOException {
        System.out.println("Decrypt INPUT_NAME: " + fileName);
-       String content = "abc";
-       readFile(INPUT_NAME);
+//       String content = "abc";
+       String content = readFile(fileName);
        String output = caesar.decrypt(content, 3);
        System.out.println("output = " + output);
-       writeFile(OUTPUT_NAME);
+//       writeFile(OUTPUT_NAME, output);
        // use BufferedWriter to write value of output var into OUTPUT_NAME file
     }
 
@@ -45,19 +45,21 @@ public class App {
        // and test the result at each iteration
     }
 
-    static void readFile(String name) throws IOException {
+    static String readFile(String name) throws IOException {
+            String result = "";
         try (FileReader file = new FileReader(name);
              BufferedReader reader  = new BufferedReader(file)) {
             while (reader.ready()) {
                 String line = reader.readLine();
-                System.out.println(line);
+                result += line +"\n";
             }
         }
+        return result;
     }
 
-    static void writeFile(String name) throws IOException {
+    static void writeFile(String name, String content) throws IOException {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(name))) {
-            bufferedWriter.write(name);
+            bufferedWriter.write(content);
             bufferedWriter.flush();
         }
     }

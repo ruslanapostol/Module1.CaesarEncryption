@@ -11,7 +11,7 @@ public class Caesar {
 
     static final Map<Character, Integer> ALPHABET2POS = new HashMap<>();
     static {
-        ALPHABET.add('A');
+        ALPHABET.add('А');
         ALPHABET.add('Б');
         ALPHABET.add('В');
         ALPHABET.add('Г');
@@ -64,6 +64,10 @@ public class Caesar {
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             System.out.println("ch = " + ch);
+            if (ALPHABET2POS.get(Character.toUpperCase(ch)) == null) {
+                result += ch;
+                continue;
+            }
             int position = ALPHABET2POS.get(Character.toUpperCase(ch));
             System.out.println("position = " + position);
             int newPosition = position + key;
@@ -74,7 +78,6 @@ public class Caesar {
 
             char newChar = ALPHABET.get(newPosition - 1);
             result += newChar;
-
         }
 
         return result;
@@ -82,11 +85,26 @@ public class Caesar {
 
     String decrypt(String text, int key) {
         System.out.println("CaesarDecrypt(): key = " + key);
+        String result = "";
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             System.out.println("ch = " + ch);
+            if (ALPHABET2POS.get(Character.toUpperCase(ch)) == null) {
+                result += ch;
+                continue;
+            }
+            int position = ALPHABET2POS.get(Character.toUpperCase(ch));
+            System.out.println("position = " + position);
+            int newPosition = position - key;
+            if(newPosition <= 0 ) {
+                newPosition = newPosition + ALPHABET2POS.size();
+            }
+            System.out.println("newPosition = " + newPosition);
 
+            char newChar = ALPHABET.get(newPosition - 1);
+            result += newChar;
         }
-        return text;
+
+        return result;
     }
 }
