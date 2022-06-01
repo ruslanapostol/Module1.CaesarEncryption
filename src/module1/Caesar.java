@@ -56,7 +56,9 @@ public class Caesar {
         for (int i = 0; i < ALPHABET.size(); i++) {
             ALPHABET2POS.put(ALPHABET.get(i), i+1);
         }
+
     }
+
 
     String encrypt(String text, int key) {
         System.out.println("CaesarEncrypt(): key = " + key);

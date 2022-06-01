@@ -1,6 +1,8 @@
 package module1;
 
 import java.io.*;
+import java.util.Map;
+import java.util.Scanner;
 
 public class App {
 
@@ -19,19 +21,25 @@ public class App {
     }
 
    static  void encrypt(String fileName) throws IOException {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the key to encrypt: ");
+       int key = scanner.nextInt();
        System.out.println("Encrypt INPUT_NAME: " + fileName);
        String content = readFile(fileName);
-       String output = caesar.encrypt(content, 3);
-       System.out.println("output = " + output);
+       String output = caesar.encrypt(content, key);
+       System.out.println("The encrypted output is: \n" + output);
        writeFile(OUTPUT_NAME,output);
 
     }
 
    static void decrypt(String fileName) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the key to decrypt: ");
+       int key = scanner.nextInt();
        System.out.println("Decrypt INPUT_NAME: " + fileName);
        String content = readFile(fileName);
-       String output = caesar.decrypt(content, 3);
-       System.out.println("output = " + output);
+       String output = caesar.decrypt(content, key);
+       System.out.println("The decrypted output is: \n " + output);
        writeFile(OUTPUT_NAME,output);
 
     }
@@ -42,14 +50,13 @@ public class App {
        for (int key = 1; key < 41; key++) {
            String output = caesar.decrypt(content, key);
            if( output.indexOf("КАРЛСОН") > 0) {
-               System.out.println("output = " + output);
+               System.out.println("The brute force attacked output:\n" + output);
                System.out.println("key = " + key);
                break;
            }
        }
-       
     }
-
+    
     static String readFile(String name) throws IOException {
             String result = "";
         try (FileReader file = new FileReader(name);
@@ -68,5 +75,4 @@ public class App {
             bufferedWriter.flush();
         }
     }
-
 }
