@@ -20,7 +20,6 @@ public class App {
 
    static  void encrypt(String fileName) throws IOException {
        System.out.println("Encrypt INPUT_NAME: " + fileName);
-//       String content = "abc";
        String content = readFile(fileName);
        String output = caesar.encrypt(content, 3);
        System.out.println("output = " + output);
@@ -30,12 +29,11 @@ public class App {
 
    static void decrypt(String fileName) throws IOException {
        System.out.println("Decrypt INPUT_NAME: " + fileName);
-//       String content = "abc";
        String content = readFile(fileName);
        String output = caesar.decrypt(content, 3);
        System.out.println("output = " + output);
-//       writeFile(OUTPUT_NAME, output);
-       // use BufferedWriter to write value of output var into OUTPUT_NAME file
+       writeFile(OUTPUT_NAME,output);
+
     }
 
    static void bruteForce(String fileName) throws IOException {
@@ -49,9 +47,7 @@ public class App {
                break;
            }
        }
-
-       //in a for call caesar.decrypt(content, i);
-       // and test the result at each iteration
+       
     }
 
     static String readFile(String name) throws IOException {
